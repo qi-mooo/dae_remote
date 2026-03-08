@@ -903,6 +903,7 @@ private enum NodeEditTarget: Identifiable {
 
 private struct RouteOptionsForm: View {
     @EnvironmentObject private var model: AppModel
+    private let builtInOutboundTokens = ["direct", "block", "must_rules"]
 
     @State private var showingMatcherSelector = false
     @State private var showingMatcherComposer = false
@@ -927,35 +928,41 @@ private struct RouteOptionsForm: View {
                                 Label("新增规则", systemImage: "plus")
                             }
                             .buttonStyle(.bordered)
-                            .disabled(model.isLoading || model.routeOutboundChoices.isEmpty)
+                            .disabled(model.isLoading)
+                        }
+
+                        VStack(alignment: .leading, spacing: 6) {
+                            Text("Fallback 出站目标")
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
+                            Menu {
+                                ForEach(model.routeOutboundChoices, id: \.self) { name in
+                                    Button(name) {
+                                        model.routeFallbackGroup = name
+                                    }
+                                }
+                            } label: {
+                                HStack {
+                                    Text(model.routeFallbackGroup.isEmpty ? "请选择目标" : model.routeFallbackGroup)
+                                        .lineLimit(1)
+                                    Spacer()
+                                    Image(systemName: "chevron.up.chevron.down")
+                                }
+                            }
+                            .buttonStyle(.borderedProminent)
+                            .tint(.indigo)
+
+                            if fallbackQuickTokens.isEmpty == false {
+                                QuickTokenRow(title: "固定目标快捷", tokens: fallbackQuickTokens) { token in
+                                    model.routeFallbackGroup = token
+                                }
+                            }
                         }
 
                         if model.nodeGroupNames.isEmpty {
-                            Text("请先在 Node 页创建至少一个 Group，Route 才能选择出站 Group。")
+                            Text("可直接使用固定目标：direct / block / must_rules；也可在 Node 页新增 Group。")
                                 .font(.footnote)
                                 .foregroundStyle(.secondary)
-                        } else {
-                            VStack(alignment: .leading, spacing: 6) {
-                                Text("Fallback 出站组")
-                                    .font(.caption)
-                                    .foregroundStyle(.secondary)
-                                Menu {
-                                    ForEach(model.nodeGroupNames, id: \.self) { name in
-                                        Button(name) {
-                                            model.routeFallbackGroup = name
-                                        }
-                                    }
-                                } label: {
-                                    HStack {
-                                        Text(model.routeFallbackGroup.isEmpty ? "请选择节点" : model.routeFallbackGroup)
-                                            .lineLimit(1)
-                                        Spacer()
-                                        Image(systemName: "chevron.up.chevron.down")
-                                    }
-                                }
-                                .buttonStyle(.borderedProminent)
-                                .tint(.indigo)
-                            }
                         }
 
                         ForEach(model.routeRules) { rule in
@@ -1047,6 +1054,11 @@ private struct RouteOptionsForm: View {
                 model.routeRules[idx].enabled = enabled
             }
         )
+    }
+
+    private var fallbackQuickTokens: [String] {
+        let builtIns = Set(builtInOutboundTokens)
+        return model.routeOutboundChoices.filter { builtIns.contains($0) }
     }
 }
 
@@ -1480,6 +1492,7 @@ private struct RouteRuleQuickEditorSheet: View {
     @Environment(\.dismiss) private var dismiss
 
     private let quickTokens = ["pname()", "dip()", "domain()", "l4proto()", "dport()", "geoip:", "geosite:"]
+    private let builtInOutboundTokens = ["direct", "block", "must_rules"]
 
     var body: some View {
         NavigationStack {
@@ -1506,7 +1519,7 @@ private struct RouteRuleQuickEditorSheet: View {
                 }
 
                 VStack(alignment: .leading, spacing: 6) {
-                    Text("出站节点")
+                    Text("出站目标")
                         .font(.caption)
                         .foregroundStyle(.secondary)
                     Menu {
@@ -1517,7 +1530,7 @@ private struct RouteRuleQuickEditorSheet: View {
                         }
                     } label: {
                         HStack {
-                            Text(rule.outbound.isEmpty ? "请选择节点" : rule.outbound)
+                            Text(rule.outbound.isEmpty ? "请选择目标" : rule.outbound)
                                 .lineLimit(1)
                             Spacer()
                             Image(systemName: "chevron.up.chevron.down")
@@ -1525,6 +1538,12 @@ private struct RouteRuleQuickEditorSheet: View {
                     }
                     .buttonStyle(.borderedProminent)
                     .tint(.indigo)
+
+                    if outboundQuickTokens.isEmpty == false {
+                        QuickTokenRow(title: "固定目标快捷", tokens: outboundQuickTokens) { token in
+                            rule.outbound = token
+                        }
+                    }
                 }
 
                 Spacer()
@@ -1541,6 +1560,11 @@ private struct RouteRuleQuickEditorSheet: View {
             }
         }
     }
+
+    private var outboundQuickTokens: [String] {
+        let builtIns = Set(builtInOutboundTokens)
+        return outboundChoices.filter { builtIns.contains($0) }
+    }
 }
 
 private struct RouteMatcherComposerSheet: View {
@@ -1550,6 +1574,7 @@ private struct RouteMatcherComposerSheet: View {
     @Binding var selectedOutbound: String
     let onConfirm: (String, String) -> Void
     @Environment(\.dismiss) private var dismiss
+    private let builtInOutboundTokens = ["direct", "block", "must_rules"]
 
     private var quickTokens: [String] {
         switch matcherKind {
@@ -1615,7 +1640,7 @@ private struct RouteMatcherComposerSheet: View {
                 }
 
                 VStack(alignment: .leading, spacing: 6) {
-                    Text("出站节点")
+                    Text("出站目标")
                         .font(.caption)
                         .foregroundStyle(.secondary)
                     Menu {
@@ -1626,7 +1651,7 @@ private struct RouteMatcherComposerSheet: View {
                         }
                     } label: {
                         HStack {
-                            Text(selectedOutbound.isEmpty ? "请选择节点" : selectedOutbound)
+                            Text(selectedOutbound.isEmpty ? "请选择目标" : selectedOutbound)
                                 .lineLimit(1)
                             Spacer()
                             Image(systemName: "chevron.up.chevron.down")
@@ -1634,6 +1659,12 @@ private struct RouteMatcherComposerSheet: View {
                     }
                     .buttonStyle(.borderedProminent)
                     .tint(.indigo)
+
+                    if outboundQuickTokens.isEmpty == false {
+                        QuickTokenRow(title: "固定目标快捷", tokens: outboundQuickTokens) { token in
+                            selectedOutbound = token
+                        }
+                    }
                 }
 
                 if matcherPreview.isEmpty == false {
@@ -1662,6 +1693,11 @@ private struct RouteMatcherComposerSheet: View {
                 }
             }
         }
+    }
+
+    private var outboundQuickTokens: [String] {
+        let builtIns = Set(builtInOutboundTokens)
+        return outboundChoices.filter { builtIns.contains($0) }
     }
 }
 

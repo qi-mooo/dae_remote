@@ -35,6 +35,7 @@ final class AppModel: ObservableObject {
     private var optionEditorLoaded = false
     private var reconnectInProgress = false
     private var manualDisconnected = false
+    private let routeBuiltInOutbounds = ["direct", "block", "must_rules"]
 
     private enum DefaultsKey {
         static let routerAddress = "dae.remote.router_address"
@@ -67,7 +68,27 @@ final class AppModel: ObservableObject {
     }
 
     var routeOutboundChoices: [String] {
-        nodeGroupNames
+        var seen = Set<String>()
+        var result: [String] = []
+
+        for outbound in routeBuiltInOutbounds {
+            let trimmed = outbound.trimmingCharacters(in: .whitespacesAndNewlines)
+            guard trimmed.isEmpty == false, seen.contains(trimmed) == false else {
+                continue
+            }
+            seen.insert(trimmed)
+            result.append(trimmed)
+        }
+
+        for group in nodeGroupNames {
+            let trimmed = group.trimmingCharacters(in: .whitespacesAndNewlines)
+            guard trimmed.isEmpty == false, seen.contains(trimmed) == false else {
+                continue
+            }
+            seen.insert(trimmed)
+            result.append(trimmed)
+        }
+        return result
     }
 
     func connect() {
@@ -223,12 +244,11 @@ final class AppModel: ObservableObject {
 
     func addRouteRule() {
         let defaultOutbound: String
-        if routeFallbackGroup.isEmpty == false {
-            defaultOutbound = routeFallbackGroup
-        } else if let first = nodeGroupNames.first {
-            defaultOutbound = first
+        let fallback = routeFallbackGroup.trimmingCharacters(in: .whitespacesAndNewlines)
+        if fallback.isEmpty == false {
+            defaultOutbound = fallback
         } else {
-            defaultOutbound = ""
+            defaultOutbound = routeOutboundChoices.first ?? ""
         }
         routeRules.append(DAERouteRule(matcher: "", outbound: defaultOutbound))
         validateRouteReferences()
@@ -596,20 +616,24 @@ final class AppModel: ObservableObject {
     }
 
     private func validateRouteReferences() {
-        let groups = nodeGroupNames
-        if groups.isEmpty == false {
-            if groups.contains(routeFallbackGroup) == false {
-                routeFallbackGroup = groups[0]
-            }
+        let choices = routeOutboundChoices
+        let choiceSet = Set(choices)
+        let currentFallback = routeFallbackGroup.trimmingCharacters(in: .whitespacesAndNewlines)
+        if currentFallback.isEmpty {
+            routeFallbackGroup = choices.first ?? ""
+        } else if choiceSet.contains(currentFallback) == false {
+            routeFallbackGroup = choices.first ?? ""
         } else {
-            routeFallbackGroup = ""
+            routeFallbackGroup = currentFallback
         }
 
-        let choices = Set(routeOutboundChoices)
-        let fallback = routeFallbackGroup
+        let fallback = routeFallbackGroup.trimmingCharacters(in: .whitespacesAndNewlines)
         routeRules = routeRules.map { rule in
             var updated = rule
-            if choices.contains(updated.outbound) == false {
+            let outbound = updated.outbound.trimmingCharacters(in: .whitespacesAndNewlines)
+            if choiceSet.contains(outbound) {
+                updated.outbound = outbound
+            } else {
                 updated.outbound = fallback
             }
             return updated
