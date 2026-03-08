@@ -903,7 +903,6 @@ private enum NodeEditTarget: Identifiable {
 
 private struct RouteOptionsForm: View {
     @EnvironmentObject private var model: AppModel
-    private let builtInOutboundTokens = ["direct", "block", "must_rules"]
 
     @State private var showingMatcherSelector = false
     @State private var showingMatcherComposer = false
@@ -951,12 +950,6 @@ private struct RouteOptionsForm: View {
                             }
                             .buttonStyle(.borderedProminent)
                             .tint(.indigo)
-
-                            if fallbackQuickTokens.isEmpty == false {
-                                QuickTokenRow(title: "固定目标快捷", tokens: fallbackQuickTokens) { token in
-                                    model.routeFallbackGroup = token
-                                }
-                            }
                         }
 
                         if model.nodeGroupNames.isEmpty {
@@ -1054,11 +1047,6 @@ private struct RouteOptionsForm: View {
                 model.routeRules[idx].enabled = enabled
             }
         )
-    }
-
-    private var fallbackQuickTokens: [String] {
-        let builtIns = Set(builtInOutboundTokens)
-        return model.routeOutboundChoices.filter { builtIns.contains($0) }
     }
 }
 
