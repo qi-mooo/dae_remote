@@ -1,0 +1,361 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		07C5317FC86993A70BBBFD3D /* OpenWrtRPCClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB6E91F42DC6675487509465 /* OpenWrtRPCClient.swift */; };
+		29320E71754E97E1C7895C66 /* GlassCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120AD7B564CF703B76142A9D /* GlassCard.swift */; };
+		45357A10B82F17C81B450A01 /* DAEModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9259EDCD171B93D6D73B6A2 /* DAEModels.swift */; };
+		5FB9937394F102F184A4CB8B /* DAERemoteApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384333BD22369B9CAE47564F /* DAERemoteApp.swift */; };
+		81E4645C5FA1D0CD965DE142 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E51631DE266EEA3C3360021 /* AppModel.swift */; };
+		F4F74892A57EEE8A3DFAAE61 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131ABBDD475C9E60106D0730 /* ContentView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0E51631DE266EEA3C3360021 /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
+		120AD7B564CF703B76142A9D /* GlassCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlassCard.swift; sourceTree = "<group>"; };
+		131ABBDD475C9E60106D0730 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		31556CFA43F5678E16A5D696 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		384333BD22369B9CAE47564F /* DAERemoteApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DAERemoteApp.swift; sourceTree = "<group>"; };
+		D535200B94459393CECEE1AB /* DAERemote.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = DAERemote.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D9259EDCD171B93D6D73B6A2 /* DAEModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DAEModels.swift; sourceTree = "<group>"; };
+		FB6E91F42DC6675487509465 /* OpenWrtRPCClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenWrtRPCClient.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		0A7DB021F0463F781C5769C2 /* DAERemoteApp */ = {
+			isa = PBXGroup;
+			children = (
+				B35D79FEB99EB9AD0922CC55 /* App */,
+				6B47035BE2B1764DA47832DE /* Models */,
+				19F8B1C3A79648C915FFE6BC /* Networking */,
+				5B25789BBFFB668821BBDBE1 /* Resources */,
+				943ABC0204EC503268E336EB /* ViewModels */,
+				478A69B2F5123FDDD19788CC /* Views */,
+			);
+			path = DAERemoteApp;
+			sourceTree = "<group>";
+		};
+		19F8B1C3A79648C915FFE6BC /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				FB6E91F42DC6675487509465 /* OpenWrtRPCClient.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		478A69B2F5123FDDD19788CC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				131ABBDD475C9E60106D0730 /* ContentView.swift */,
+				120AD7B564CF703B76142A9D /* GlassCard.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		5B25789BBFFB668821BBDBE1 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				31556CFA43F5678E16A5D696 /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		6B47035BE2B1764DA47832DE /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D9259EDCD171B93D6D73B6A2 /* DAEModels.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		942E33969950799F2CD94C04 = {
+			isa = PBXGroup;
+			children = (
+				0A7DB021F0463F781C5769C2 /* DAERemoteApp */,
+				A416FFE489EF0043BD3C5C7D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		943ABC0204EC503268E336EB /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				0E51631DE266EEA3C3360021 /* AppModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		A416FFE489EF0043BD3C5C7D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D535200B94459393CECEE1AB /* DAERemote.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B35D79FEB99EB9AD0922CC55 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				384333BD22369B9CAE47564F /* DAERemoteApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4E23944A1FEF8EAC3A973630 /* DAERemote */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 53E6D67D04D2B85AB3CB826E /* Build configuration list for PBXNativeTarget "DAERemote" */;
+			buildPhases = (
+				F6F64082969E1F43EC467956 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DAERemote;
+			packageProductDependencies = (
+			);
+			productName = DAERemote;
+			productReference = D535200B94459393CECEE1AB /* DAERemote.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9495237B7EE26C4E01FA3A2F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					4E23944A1FEF8EAC3A973630 = {
+						DevelopmentTeam = "";
+					};
+				};
+			};
+			buildConfigurationList = 0A340A401B3520E77147D70F /* Build configuration list for PBXProject "DAERemote" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 942E33969950799F2CD94C04;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4E23944A1FEF8EAC3A973630 /* DAERemote */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F6F64082969E1F43EC467956 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				81E4645C5FA1D0CD965DE142 /* AppModel.swift in Sources */,
+				F4F74892A57EEE8A3DFAAE61 /* ContentView.swift in Sources */,
+				45357A10B82F17C81B450A01 /* DAEModels.swift in Sources */,
+				5FB9937394F102F184A4CB8B /* DAERemoteApp.swift in Sources */,
+				29320E71754E97E1C7895C66 /* GlassCard.swift in Sources */,
+				07C5317FC86993A70BBBFD3D /* OpenWrtRPCClient.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		003F6B2448D7BCBE26B458EF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = DAERemoteApp/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.qimo.daeremote;
+				PRODUCT_NAME = "DAE Remote";
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5E69487B7B3B7FA547425FC4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 6.0;
+			};
+			name = Debug;
+		};
+		6E493F9A71C628FC6FE8DB2A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 6.0;
+			};
+			name = Release;
+		};
+		E1E73FF91905156E4B2923E2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = DAERemoteApp/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.qimo.daeremote;
+				PRODUCT_NAME = "DAE Remote";
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0A340A401B3520E77147D70F /* Build configuration list for PBXProject "DAERemote" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5E69487B7B3B7FA547425FC4 /* Debug */,
+				6E493F9A71C628FC6FE8DB2A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		53E6D67D04D2B85AB3CB826E /* Build configuration list for PBXNativeTarget "DAERemote" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				003F6B2448D7BCBE26B458EF /* Debug */,
+				E1E73FF91905156E4B2923E2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9495237B7EE26C4E01FA3A2F /* Project object */;
+}

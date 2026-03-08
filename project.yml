@@ -1,0 +1,28 @@
+name: DAERemote
+options:
+  minimumXcodeGenVersion: 2.41.0
+  createIntermediateGroups: true
+settings:
+  base:
+    SWIFT_VERSION: 6.0
+targets:
+  DAERemote:
+    type: application
+    platform: iOS
+    deploymentTarget: "17.0"
+    sources:
+      - path: DAERemoteApp
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.qimo.daeremote
+        PRODUCT_NAME: DAE Remote
+        INFOPLIST_FILE: DAERemoteApp/Resources/Info.plist
+        TARGETED_DEVICE_FAMILY: "1,2"
+        SUPPORTS_MACCATALYST: NO
+        SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD: NO
+        DEVELOPMENT_TEAM: ""
+schemes:
+  DAERemote:
+    build:
+      targets:
+        DAERemote: all
